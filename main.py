@@ -9,12 +9,14 @@ meteor = Spell("Meteor", 20, 200, "black")
 quake = Spell("Quake", 14, 140, "black")
 
 # Create White MAgic
-cure = Spell("Cure", 12, 120, "White")
-cura = Spell("Cura", 18, 200, "White")
+cure = Spell("Cure", 12, 120, "white")
+cura = Spell("Cura", 18, 200, "white")
+
+# Create Charge Magic
+pray = Spell("Pray", 0, 30, "charge")
 
 # Instantiate People
-
-player = Person(460, 65, 60, 34, [fire, thunder, ice, meteor, cure, cura])
+player = Person(460, 65, 60, 34, [fire, thunder, ice, meteor, cure, cura, pray])
 enemy = Person(1200, 65, 45, 25, [])
 
 running = True
@@ -45,9 +47,19 @@ while running:
         if spell.cost > current_mp:
             print(bcolors.FAIL + "\nNot enough MP\n" + bcolors.ENDC)
             continue
+
         player.reduce_mp(spell.cost)
-        enemy.take_damage(magic_dmg)
-        print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
+
+        if spell.type == "white":
+            player.heal(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + " heals for", str(magic_dmg), "HP." + bcolors.ENDC)
+        elif spell.type == "black":
+            enemy.take_damage(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + " attacks for", str(magic_dmg), "HP." + bcolors.ENDC)
+        elif spell.type == "charge":
+            player.charge(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + " charges", str(magic_dmg), "MP." + bcolors.ENDC)
+
 
     enemy_choice = 1
 

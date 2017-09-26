@@ -27,7 +27,9 @@ megalixer = Item("Megelixer", "elixer", "Fully restores HP/MP of entire party", 
 grenade = Item("Grenade", "attack", "Deals a lot of damage", 500)
 
 player_magic = [fire, thunder, ice, meteor, cure, cura, pray]
-player_items = [potion, hipotion, superpotion, elixer, megalixer, grenade]
+player_items = [{"item": potion, "nmb": 15}, {"item": hipotion, "nmb": 5},
+                {"item": superpotion, "nmb": 2}, {"item": elixer, "nmb": 1},
+                {"item": grenade, "nmb": 10}]
 
 # Instantiate People
 player = Person(460, 65, 60, 34, player_magic, player_items)
@@ -86,7 +88,13 @@ while running:
         if item_choice == -1:
             continue
 
-        item = player.items[item_choice]
+        item = player.items[item_choice]["item"]
+
+        if player.items[item_choice]["nmb"] == 0:
+            print(bcolors.FAIL + "\n" + "None left..." + bcolors.ENDC)
+            continue
+
+        player.items[item_choice]["nmb"] -= 1
 
         if item.type == "potion":
             player.heal(item.dmg)
@@ -100,7 +108,7 @@ while running:
             print(bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.dmg), "MP" + bcolors.ENDC)
         elif item.type == "attack":
             enemy.take_damage(item.dmg)
-            print(bcolors.OKBLUE + item.name + " attacks for", str(item.dmg) + bcolors.ENDC)
+            print(bcolors.FAIL + item.name + " attacks for", str(item.dmg) + bcolors.ENDC)
 
     enemy_choice = 1
 

@@ -31,8 +31,8 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="140" column="71" lean-forward="true" selection-start-line="140" selection-start-column="71" selection-end-line="140" selection-end-column="71" />
+            <state relative-caret-position="346">
+              <caret line="172" column="12" lean-forward="false" selection-start-line="172" selection-start-column="12" selection-end-line="172" selection-end-column="12" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -53,8 +53,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+            <state relative-caret-position="289">
+              <caret line="127" column="47" lean-forward="true" selection-start-line="127" selection-start-column="47" selection-end-line="127" selection-end-column="47" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -97,8 +97,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="631" />
+    <option name="y" value="575" />
     <option name="width" value="1098" />
     <option name="height" value="444" />
   </component>
@@ -288,16 +288,24 @@
       <option name="project" value="LOCAL" />
       <updated>1506455431043</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Some minor changes so that HP/MP values look neater on the battle screen. The bars still seem a little offset, although it appears to be because the &quot;ASCII Block&quot; character is slightly bigger than one character in length on the screen.">
+      <created>1506457486352</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1506457486352</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.48214287" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.50257164" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5026511" sideWeight="0.49742836" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4559915" sideWeight="0.49742836" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14209968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32816538" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -330,7 +338,8 @@
     <MESSAGE value="Added the beginnings of a better HP/MP interface, which has currently added a big HP and MP bar at the beginning, which looks pretty enough but doesn't actually change. However, I'm committing to &quot;committing&quot; at the end of each lesson (especially each longer lesson), so I have a trail of backups should something mess up." />
     <MESSAGE value="Added stuff to get the bars displaying the correct HP and MP, and also the logic for more than one player in the party. However, the HP/MP bars do not animate (yet...)" />
     <MESSAGE value="Have working HP/MP bars for both player party and enemy. Also did some more beautification." />
-    <option name="LAST_COMMIT_MESSAGE" value="Have working HP/MP bars for both player party and enemy. Also did some more beautification." />
+    <MESSAGE value="Some minor changes so that HP/MP values look neater on the battle screen. The bars still seem a little offset, although it appears to be because the &quot;ASCII Block&quot; character is slightly bigger than one character in length on the screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some minor changes so that HP/MP values look neater on the battle screen. The bars still seem a little offset, although it appears to be because the &quot;ASCII Block&quot; character is slightly bigger than one character in length on the screen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -447,16 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="37" column="43" lean-forward="false" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/magic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -465,10 +464,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="127" column="47" lean-forward="true" selection-start-line="127" selection-start-column="47" selection-end-line="127" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="140" column="71" lean-forward="true" selection-start-line="140" selection-start-column="71" selection-end-line="140" selection-end-column="71" />
+        <state relative-caret-position="346">
+          <caret line="172" column="12" lean-forward="false" selection-start-line="172" selection-start-column="12" selection-end-line="172" selection-end-column="12" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

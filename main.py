@@ -1,6 +1,7 @@
 from classes.game import Person, bcolors
 from classes.magic import Spell
 from classes.inventory import Item
+import random
 
 
 # Create Black Magic
@@ -32,10 +33,10 @@ player_items = [{"item": potion, "nmb": 15}, {"item": hipotion, "nmb": 5},
                 {"item": grenade, "nmb": 10}]
 
 # Instantiate People
-player1 = Person("Ronius :", 3260, 65, 60, 34, player_magic, player_items)
-player2 = Person("Valos  :", 4160, 65, 60, 34, player_magic, player_items)
-player3 = Person("Rydiana:", 3089, 65, 60, 34, player_magic, player_items)
-enemy = Person("Magus  :", 12000, 65, 45, 250, [], [])
+player1 = Person("Ronius ", 3260, 65, 60, 34, player_magic, player_items)
+player2 = Person("Valos  ", 4160, 65, 60, 34, player_magic, player_items)
+player3 = Person("Rydiana", 3089, 65, 60, 34, player_magic, player_items)
+enemy = Person("Magus  ", 12000, 65, 45, 250, [], [])
 
 players = [player1, player2, player3]
 running = True
@@ -43,11 +44,16 @@ i = 0
 
 print(bcolors.FAIL + bcolors.BOLD + "An enemy attacks!" + bcolors.ENDC)
 
+print("==========================")
+enemy.get_enemy_stats()
+
+print("\n")
+
 while running:
     print("==========================")
 
-    print("NAME          HP                                                        MP")
-    print("----          --                                                        --")
+    print("NAME          HP                                                           MP")
+    print("----          --                                                           --")
     for player in players:
         player.get_stats()
 
@@ -113,8 +119,14 @@ while running:
                 print("--------------------------")
                 print(bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.dmg), "HP" + bcolors.ENDC)
             elif item.type == "elixer":
-                player.heal(item.dmg)
-                player.charge(item.dmg)
+                if item.name == "Megalixer":
+                    for i in players:
+                        i.hp = i.maxhp
+                        i.mp = i.maxmp
+                else:
+                    player.heal(player.maxhp)
+                    player.charge(player.maxmp)
+
                 print("--------------------------")
                 print(bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.dmg), "HP" + bcolors.ENDC)
                 print(bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.dmg), "MP" + bcolors.ENDC)
@@ -125,16 +137,17 @@ while running:
         print("--------------------------")
 
     enemy_choice = 1
+    target = random.randrange (0, 2)
 
     enemy_dmg = enemy.generate_damage()
-    player1.take_damage(enemy_dmg)
-    print(bcolors.FAIL + str(enemy.name), "attacked for", str(enemy_dmg) + bcolors.ENDC)
+    players[target].take_damage(enemy_dmg)
+    print(bcolors.FAIL + str(enemy.name), "attacks", str(players[target].name), "for", str(enemy_dmg) + bcolors.ENDC)
 
     print("==========================")
-    enemy.get_stats()
+    enemy.get_enemy_stats()
 
     print("\n")
-    print("==========================")
+
     if enemy.get_hp() == 0:
         print (bcolors.OKGREEN + "You win!!" + bcolors.ENDC)
         running = False

@@ -35,7 +35,7 @@ player_items = [{"item": potion, "nmb": 15}, {"item": hipotion, "nmb": 5},
 player1 = Person("Ronius :", 3260, 65, 60, 34, player_magic, player_items)
 player2 = Person("Valos  :", 4160, 65, 60, 34, player_magic, player_items)
 player3 = Person("Rydiana:", 3089, 65, 60, 34, player_magic, player_items)
-enemy = Person("Magus  :", 1200, 65, 45, 250, [], [])
+enemy = Person("Magus  :", 12000, 65, 45, 250, [], [])
 
 players = [player1, player2, player3]
 running = True

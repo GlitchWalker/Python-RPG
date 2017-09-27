@@ -32,14 +32,16 @@ player_items = [{"item": potion, "nmb": 15}, {"item": hipotion, "nmb": 5},
                 {"item": superpotion, "nmb": 2}, {"item": elixer, "nmb": 1},
                 {"item": grenade, "nmb": 10}]
 
+enemy_magic = [fire, thunder, cure, pray]
+
 # Instantiate People
 player1 = Person("Ronius :", 3260, 65, 60, 34, player_magic, player_items)
 player2 = Person("Valos  :", 4160, 65, 60, 34, player_magic, player_items)
 player3 = Person("Rydiana:", 3089, 65, 60, 34, player_magic, player_items)
 
-enemy1 = Person("Imp    :", 1250, 130, 560, 325, [], [])
-enemy2 = Person("Magus  :", 12000, 65, 45, 250, [], [])
-enemy3 = Person("Imp    :", 1250, 130, 560, 325, [], [])
+enemy1 = Person("Imp    :", 1250, 130, 560, 325, enemy_magic, [])
+enemy2 = Person("Magus  :", 12000, 65, 45, 250, enemy_magic, [])
+enemy3 = Person("Imp    :", 1250, 130, 560, 325, enemy_magic, [])
 
 players = [player1, player2, player3]
 enemies = [enemy1, enemy2, enemy3]
@@ -167,19 +169,7 @@ while running:
 
         print("--------------------------")
 
-    enemy_choice = 1
-    target = random.randrange (0, 2)
-
-    enemy_dmg = enemies[0].generate_damage()
-    players[target].take_damage(enemy_dmg)
-    print(bcolors.FAIL + str(enemies[target].name.replace(" ", "")), "attacks", str(players[target].name.replace(" ", "")), "for", str(enemy_dmg) + bcolors.ENDC)
-
-    print("==========================")
-
-    for enemy in enemies:
-        enemy.get_enemy_stats()
-
-    print("\n")
+    # Check if battle is over
 
     defeated_enemies = 0
     defeated_players = 0
@@ -192,13 +182,66 @@ while running:
         if player.get_hp() == 0:
             defeated_players += 1
 
+    # Check if player won
+
     if defeated_enemies == 2:
-        print (bcolors.OKGREEN + "You win!!" + bcolors.ENDC)
+        print(bcolors.OKGREEN + "You win!!" + bcolors.ENDC)
         running = False
+
+    # Check if player won
 
     elif defeated_players == 2:
         print(bcolors.FAIL + "The enemy has defeated you!! GAME OVER" + bcolors.ENDC)
         running = False
+
+    # Enemy attack phase
+
+    for enemy in enemies:
+        enemy_choice = random.randrange(0, 2)
+
+        if enemy_choice == 0:
+            # Chose attack
+
+            target = random.randrange(0, 3)
+            enemy_dmg = enemies[i].generate_damage()
+
+            players[target].take_damage(enemy_dmg)
+            print(bcolors.FAIL + str(enemies[target].name.replace(" " + ":", "")), "attacks", str(players[target].name.replace(" ", "")), "for", str(enemy_dmg) + bcolors.ENDC)
+
+        elif enemy_choice == 1:
+
+            magic_choice = random.randrange(0, 3)
+            spell = enemy.magic[magic_choice]
+            magic_dmg = spell.generate_damage()
+            enemy.reduce_mp(spell.cost)
+
+            if spell.type == "white":
+                enemy.heal(magic_dmg)
+                print(bcolors.OKBLUE + str(enemies[target].name.replace(" " + ":", "")) + "'s " + spell.name + " heals " + enemy.name + " for", str(magic_dmg), "HP." + bcolors.ENDC)
+            elif spell.type == "black":
+
+                target = random.randrange(0, 3)
+
+                players[target].take_damage(magic_dmg)
+
+                print(bcolors.OKBLUE + enemy.name.replace(" " + ":", "") + "'s " + spell.name + " cast on " + players[target].name.replace(" ", "") + " for ", str(magic_dmg), "HP." + bcolors.ENDC)
+
+                if players[target].get_hp() == 0:
+                    print(players[target].name.replace(" ", "") + " has been killed.")
+                    del players[target]
+
+            elif spell.type == "charge":
+                enemy.charge(magic_dmg)
+                print(bcolors.OKBLUE + enemy.name.replace(" ", "") + "'s " + spell.name + " charges", str(magic_dmg), "MP." + bcolors.ENDC)
+
+
+    print("==========================")
+
+    for enemy in enemies:
+        enemy.get_enemy_stats()
+
+    print("\n")
+
 
 '''
 Various testing tools I wanted to keep to hand

@@ -85,6 +85,17 @@ class Person:
             print("    " + str(i) + ".", item["item"].name + ":", item["item"].desc + bcolors.BOLD + " (x" + str(item["nmb"]) + ")" + bcolors.ENDC)
             i += 1
 
+    def choose_target(self, enemies):
+        i = 1
+
+        print("\n" + bcolors.FAIL + bcolors.BOLD + "   TARGET:" + bcolors.ENDC)
+        for enemy in enemies:
+            if enemy.get_hp() != 0:
+                print("        " + str(i) + ".", enemy.name)
+                i += 1
+        choice = int(input("    Choose target:")) - 1
+        return choice
+
     def get_enemy_stats(self):
         hp_bar = ""
         bar_ticks = self.hp / self.maxhp * 100 / 2.25
@@ -99,8 +110,8 @@ class Person:
         hp_string = str(self.hp) + "/" + str(self.maxhp)
         current_hp = ""
 
-        if len(hp_string) < 9:
-            decreased = 9 - len(hp_string)
+        if len(hp_string) < 11:
+            decreased = 11 - len(hp_string)
 
             while decreased > 0:
                 current_hp += " "
@@ -112,7 +123,7 @@ class Person:
 
         print("_________________________________________________________________________________________________")
 
-        print(bcolors.BOLD + str(self.name) + "      " +
+        print(bcolors.BOLD + str(self.name.replace(" ", "")) + "      " +
               current_hp + "|" + bcolors.FAIL + hp_bar + bcolors.ENDC + bcolors.BOLD)
 
     def get_stats(self):
@@ -142,8 +153,8 @@ class Person:
             current_hp = ""
             current_mp = ""
 
-            if len(hp_string) < 9:
-                decreased = 9 - len(hp_string)
+            if len(hp_string) < 11:
+                decreased = 11 - len(hp_string)
 
                 while decreased > 0:
                     current_hp += " "
@@ -170,4 +181,4 @@ class Person:
               current_hp + "|" + bcolors.OKGREEN + hp_bar + bcolors.ENDC + bcolors.BOLD + "|       " +
               current_mp + "|" + bcolors.OKBLUE + mp_bar + bcolors.ENDC)
 
-            
+
